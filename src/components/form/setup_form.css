@@ -1,3 +1,27 @@
 .container_form {
+  background: var(--color-white);
   margin-top: 5rem;
+  max-width: 500px;
+  text-align: left;
+  padding: 1.2rem 1.8rem;
+  border-radius: 24px;
+}
+
+.form_title {
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+
+label {
+  color: var(--color-text);
+}
+.input_number {
+  background-color: var(--color-text);
+  margin-top: 0.2rem;
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.3rem 0.4rem;
+  opacity: 0.4;
+  color: var(--color-white);
+  border-radius: 0.5rem;
 }
