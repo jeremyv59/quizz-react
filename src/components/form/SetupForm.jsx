@@ -48,7 +48,17 @@ const SetupForm = ({ started }) => {
       <Form.Item rules={[{ type: "number", min: 0, max: 52 }]}>
         <Input
           className="input_number"
-          value={quizzParameters.nbOfQuestions}
+          value={
+            quizzParameters.nbOfQuestions !== 0
+              ? quizzParameters.nbOfQuestions
+              : ""
+          }
+          onChange={(e) =>
+            setQuizzParameters({
+              ...quizzParameters,
+              nbOfQuestions: Number(e.target.value),
+            })
+          }
         ></Input>
       </Form.Item>
 
