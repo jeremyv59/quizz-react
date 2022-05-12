@@ -1,4 +1,7 @@
-.picker_component {
-  width: 100%;
-  background-color: red;
+.container_picker {
+  margin-top: 1.2rem;
 }
+
+/* .container_select {
+  background: red;
+} */
