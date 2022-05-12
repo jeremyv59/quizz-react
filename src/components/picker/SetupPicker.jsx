@@ -1,5 +1,4 @@
 import React from "react";
-import Picker from "rc-picker";
 import "../picker/setup_picker.css";
 
 const SetupPicker = () => {
