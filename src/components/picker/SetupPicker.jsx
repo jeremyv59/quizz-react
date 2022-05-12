@@ -35,6 +35,7 @@ const SetupPicker = ({
   style,
   value,
   setValue,
+  fieldName
 }) => {
   return (
     <React.Fragment>
@@ -44,7 +45,7 @@ const SetupPicker = ({
           styles={customStyles}
           isSearchable={false}
           defaultValue={defaultValue}
-          onChange={(e) => setValue({ ...value, categorie: e.value })}
+          onChange={(e) => setValue({ ...value, [fieldName] : e.value })}
           options={options}
         ></Select>
       </div>

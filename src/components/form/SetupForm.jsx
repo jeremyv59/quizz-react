@@ -37,12 +37,6 @@ const SetupForm = ({ started }) => {
     difficulty: "easy",
   });
 
-  const error = () => {
-    message.error(
-      "Impossible de générer les questions, essayez de changer les options"
-    );
-  };
-
   useEffect(() => {
     console.log("quizz param", quizzParameters);
   }, [quizzParameters]);
@@ -62,6 +56,7 @@ const SetupForm = ({ started }) => {
         defaultValue={optionsCat[0]}
         value={quizzParameters}
         setValue={setQuizzParameters}
+        fieldName="categorie"
         options={optionsCat}
         style={styles.select}
         labelName="Catégorie"
@@ -69,6 +64,9 @@ const SetupForm = ({ started }) => {
 
       <SetupPicker
         defaultValue={optionsDiff[0]}
+        value={quizzParameters}
+        setValue={setQuizzParameters}
+        fieldName="difficulty"
         options={optionsDiff}
         style={styles.select}
         labelName="Difficulté"
