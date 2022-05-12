@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Input } from "antd";
 import { message, Button, Space } from "antd";
 import "../form/setup_form.css";
@@ -7,8 +7,14 @@ import ErrorMessage from "../messages/ErrorMessage";
 
 const optionsCat = [
   { value: "sports", label: "Sports" },
-  { value: "cinema", label: "Cinema" },
-  { value: "politique", label: "Politique" },
+  { value: "livres", label: "Livres" },
+  { value: "jeux-vidéos", label: "Jeux-vidéos" },
+  { value: "histoire", label: "Histoire" },
+  { value: "art", label: "Art" },
+  { value: "comics", label: "Comics" },
+  { value: "manga", label: "Manga" },
+  { value: "voitures", label: "Voitures" },
+  { value: "mythologie", label: "Mythologie" },
 ];
 
 const optionsDiff = [
@@ -26,7 +32,7 @@ const styles = {
 const SetupForm = ({ started }) => {
   const [step, setStep] = useState(1);
   const [quizzParameters, setQuizzParameters] = useState({
-    nbOfQuestions: 0,
+    nbOfQuestions: 10,
     categorie: "sports",
     difficulty: "easy",
   });
@@ -36,6 +42,10 @@ const SetupForm = ({ started }) => {
       "Impossible de générer les questions, essayez de changer les options"
     );
   };
+
+  useEffect(() => {
+    console.log("quizz param", quizzParameters);
+  }, [quizzParameters]);
 
   return (
     <Form className="container_form">
@@ -50,6 +60,8 @@ const SetupForm = ({ started }) => {
 
       <SetupPicker
         defaultValue={optionsCat[0]}
+        value={quizzParameters}
+        setValue={setQuizzParameters}
         options={optionsCat}
         style={styles.select}
         labelName="Catégorie"

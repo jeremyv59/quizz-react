@@ -1,13 +1,16 @@
 import { useState } from "react";
 import SetupForm from "./components/form/SetupForm";
+import { AppContextProvider } from "./context/context";
 
 function App() {
   const [start, setStart] = useState(false);
 
   return (
-    <div className="container">
-      <SetupForm started={start}></SetupForm>
-    </div>
+    <AppContextProvider>
+      <div className="container">
+        <SetupForm started={start}></SetupForm>
+      </div>
+    </AppContextProvider>
   );
 }
 

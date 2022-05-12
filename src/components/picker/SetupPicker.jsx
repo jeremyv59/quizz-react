@@ -28,7 +28,14 @@ const customStyles = {
   }),
 };
 
-const SetupPicker = ({ labelName, defaultValue, options, style }) => {
+const SetupPicker = ({
+  labelName,
+  defaultValue,
+  options,
+  style,
+  value,
+  setValue,
+}) => {
   return (
     <React.Fragment>
       <div style={style}>
@@ -37,6 +44,7 @@ const SetupPicker = ({ labelName, defaultValue, options, style }) => {
           styles={customStyles}
           isSearchable={false}
           defaultValue={defaultValue}
+          onChange={(e) => setValue({ ...value, categorie: e.value })}
           options={options}
         ></Select>
       </div>
