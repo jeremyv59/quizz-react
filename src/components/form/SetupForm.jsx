@@ -6,21 +6,17 @@ import SetupPicker from "../picker/SetupPicker";
 import ErrorMessage from "../messages/ErrorMessage";
 
 const optionsCat = [
-  { value: "sports", label: "Sports" },
-  { value: "livres", label: "Livres" },
-  { value: "jeux-vidéos", label: "Jeux-vidéos" },
-  { value: "histoire", label: "Histoire" },
-  { value: "art", label: "Art" },
-  { value: "comics", label: "Comics" },
-  { value: "manga", label: "Manga" },
-  { value: "voitures", label: "Voitures" },
-  { value: "mythologie", label: "Mythologie" },
+  { id: 15, value: "video-games", label: "Video-games" },
+  { id: 21, value: "sports", label: "Sports" },
+  { id: 23, value: "history", label: "History" },
+  { id: 24, value: "politics", label: "Politics" },
+  { id: 27, value: "animals", label: "Animals" },
 ];
 
 const optionsDiff = [
-  { value: "facile", label: "Facile" },
-  { value: "intermédiaire", label: "Intermédiaire" },
-  { value: "difficile", label: "Difficile" },
+  { value: "easy", label: "Easy" },
+  { value: "medium", label: "Medium" },
+  { value: "hard", label: "Hard" },
 ];
 
 const styles = {
@@ -33,7 +29,7 @@ const SetupForm = ({ started }) => {
   const [step, setStep] = useState(1);
   const [quizzParameters, setQuizzParameters] = useState({
     nbOfQuestions: 10,
-    categorie: "sports",
+    category: 21,
     difficulty: "easy",
   });
 
@@ -44,7 +40,7 @@ const SetupForm = ({ started }) => {
   return (
     <Form className="container_form">
       <h1 className="form_title">Paramétrage</h1>
-      <label>Nombre de questions</label>
+      <label>Number of questions</label>
       <Form.Item rules={[{ type: "number", min: 0, max: 52 }]}>
         <Input
           className="input_number"
@@ -66,10 +62,10 @@ const SetupForm = ({ started }) => {
         defaultValue={optionsCat[0]}
         value={quizzParameters}
         setValue={setQuizzParameters}
-        fieldName="categorie"
+        fieldName="category"
         options={optionsCat}
         style={styles.select}
-        labelName="Catégorie"
+        labelName="Category"
       ></SetupPicker>
 
       <SetupPicker
@@ -79,7 +75,7 @@ const SetupForm = ({ started }) => {
         fieldName="difficulty"
         options={optionsDiff}
         style={styles.select}
-        labelName="Difficulté"
+        labelName="Difficulty"
       ></SetupPicker>
 
       {/* <ErrorMessage></ErrorMessage> */}
