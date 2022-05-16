@@ -25,11 +25,22 @@ const styles = {
   },
 };
 
+const checkCategoryId = (selectedCat) => {
+  optionsCat.map((opt) => {
+    if (selectedCat === opt.value) {
+      console.log("op id", opt.id);
+      return opt.id;
+    }
+  });
+};
+
+const onHandleStart = () => {};
+
 const SetupForm = ({ started }) => {
   const [step, setStep] = useState(1);
   const [quizzParameters, setQuizzParameters] = useState({
     nbOfQuestions: 10,
-    category: 21,
+    category: "video-games",
     difficulty: "easy",
   });
 
@@ -80,7 +91,12 @@ const SetupForm = ({ started }) => {
 
       {/* <ErrorMessage></ErrorMessage> */}
       <Form.Item className="btn_container">
-        <Button className="btn_start">Lancer le quizz</Button>
+        <Button
+          onClick={checkCategoryId(quizzParameters.category)}
+          className="btn_start"
+        >
+          Lancer le quizz
+        </Button>
       </Form.Item>
     </Form>
   );
