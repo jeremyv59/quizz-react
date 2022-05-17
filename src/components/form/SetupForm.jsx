@@ -4,6 +4,7 @@ import { message, Button, Space } from "antd";
 import "../form/setup_form.css";
 import SetupPicker from "../picker/SetupPicker";
 import ErrorMessage from "../messages/ErrorMessage";
+import { getQuestions } from "../../data/getQuestions";
 
 const optionsCat = [
   { id: 15, value: "video-games", label: "Video-games" },
@@ -25,17 +26,6 @@ const styles = {
   },
 };
 
-const checkCategoryId = (selectedCat) => {
-  optionsCat.map((opt) => {
-    if (selectedCat === opt.value) {
-      console.log("op id", opt.id);
-      return opt.id;
-    }
-  });
-};
-
-const onHandleStart = () => {};
-
 const SetupForm = ({ started }) => {
   const [step, setStep] = useState(1);
   const [quizzParameters, setQuizzParameters] = useState({
@@ -44,9 +34,36 @@ const SetupForm = ({ started }) => {
     difficulty: "easy",
   });
 
-  useEffect(() => {
-    console.log("quizz param", quizzParameters);
-  }, [quizzParameters]);
+  // const onHandleStart = () => {
+  //   checkCategoryId(quizzParameters.category);
+  // };
+
+  const checkCategoryId = async (selectedCat) => {
+     optionsCat.map((opt) => {
+      if (selectedCat === opt.value) {
+        return opt.id;
+      }
+    });
+  };
+
+  // useEffect( () => {
+  //   console.log("quizz param", quizzParameters);
+  //   let catId = checkCategoryId(quizzParameters.category);
+
+  //   console.log("cat id", catId);
+  // }, [quizzParameters]);
+
+  const onHandleStart =  async () => {
+
+    let result = await checkCategoryId(quizzParameters.category) ;
+
+
+    getQuestions(
+      quizzParameters.nbOfQuestions,
+      result,
+      quizzParameters.difficulty
+    );
+  };
 
   return (
     <Form className="container_form">
@@ -91,10 +108,7 @@ const SetupForm = ({ started }) => {
 
       {/* <ErrorMessage></ErrorMessage> */}
       <Form.Item className="btn_container">
-        <Button
-          onClick={checkCategoryId(quizzParameters.category)}
-          className="btn_start"
-        >
+        <Button onClick={onHandleStart} className="btn_start">
           Lancer le quizz
         </Button>
       </Form.Item>
