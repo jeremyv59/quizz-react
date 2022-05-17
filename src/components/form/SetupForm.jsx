@@ -36,10 +36,6 @@ const SetupForm = ({ started }) => {
 
   let catId = 0;
 
-  // const onHandleStart = () => {
-  //   checkCategoryId(quizzParameters.category);
-  // };
-
   const checkCategoryId = (selectedCat) => {
     let result = 0;
     optionsCat.map((opt) => {
