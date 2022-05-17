@@ -51,22 +51,20 @@ const SetupForm = ({ started }) => {
   };
 
   useEffect(() => {
-    console.log("quizz param", quizzParameters);
     catId = checkCategoryId(quizzParameters.category);
-
-    console.log("cat id", catId);
   }, [quizzParameters.category]);
 
-  // const onHandleStart = () => {
-  //   let result = await checkCategoryId(quizzParameters.category);
-
-  //   console.log("res", result);
-  //   getQuestions(
-  //     quizzParameters.nbOfQuestions,
-  //     result,
-  //     quizzParameters.difficulty
-  //   );
-  // };
+  const onHandleStart = () => {
+    let questions;
+    getQuestions(
+      quizzParameters.nbOfQuestions,
+      catId,
+      quizzParameters.difficulty
+    ).then((res) => {
+      questions = res.data.results;
+      console.log("questr", questions);
+    });
+  };
 
   return (
     <Form className="container_form">
@@ -111,7 +109,9 @@ const SetupForm = ({ started }) => {
 
       {/* <ErrorMessage></ErrorMessage> */}
       <Form.Item className="btn_container">
-        <Button className="btn_start">Lancer le quizz</Button>
+        <Button onClick={onHandleStart} className="btn_start">
+          Lancer le quizz
+        </Button>
       </Form.Item>
     </Form>
   );
