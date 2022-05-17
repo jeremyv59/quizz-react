@@ -34,36 +34,39 @@ const SetupForm = ({ started }) => {
     difficulty: "easy",
   });
 
+  let catId = 0;
+
   // const onHandleStart = () => {
   //   checkCategoryId(quizzParameters.category);
   // };
 
-  const checkCategoryId = async (selectedCat) => {
-     optionsCat.map((opt) => {
+  const checkCategoryId = (selectedCat) => {
+    let result = 0;
+    optionsCat.map((opt) => {
       if (selectedCat === opt.value) {
-        return opt.id;
+        result = opt.id;
       }
     });
+    return result;
   };
 
-  // useEffect( () => {
-  //   console.log("quizz param", quizzParameters);
-  //   let catId = checkCategoryId(quizzParameters.category);
+  useEffect(() => {
+    console.log("quizz param", quizzParameters);
+    catId = checkCategoryId(quizzParameters.category);
 
-  //   console.log("cat id", catId);
-  // }, [quizzParameters]);
+    console.log("cat id", catId);
+  }, [quizzParameters.category]);
 
-  const onHandleStart =  async () => {
+  // const onHandleStart = () => {
+  //   let result = await checkCategoryId(quizzParameters.category);
 
-    let result = await checkCategoryId(quizzParameters.category) ;
-
-
-    getQuestions(
-      quizzParameters.nbOfQuestions,
-      result,
-      quizzParameters.difficulty
-    );
-  };
+  //   console.log("res", result);
+  //   getQuestions(
+  //     quizzParameters.nbOfQuestions,
+  //     result,
+  //     quizzParameters.difficulty
+  //   );
+  // };
 
   return (
     <Form className="container_form">
@@ -108,9 +111,7 @@ const SetupForm = ({ started }) => {
 
       {/* <ErrorMessage></ErrorMessage> */}
       <Form.Item className="btn_container">
-        <Button onClick={onHandleStart} className="btn_start">
-          Lancer le quizz
-        </Button>
+        <Button className="btn_start">Lancer le quizz</Button>
       </Form.Item>
     </Form>
   );
