@@ -8,6 +8,8 @@ const Questions = () => {
 
   const { questions } = context;
 
+  let answersArray = [];
+
   // const checkAnswers = () => {
   //   questions.map((question) => {
   //     console.log("check", question);
@@ -27,17 +29,20 @@ const Questions = () => {
   // console.log("qes", questions);
 
   const getAnswers = () => {
-    let answersArray = [];
     questions.map((question) => {
       answersArray = question.incorrect_answers;
-      // answersArray.push(question.correct_answer)
+      answersArray.push(...answersArray, question.correct_answer);
+      console.log("que", question);
     });
-    console.log("answ arr", answersArray);
   };
 
-  console.log("quest", questions);
-
+  // console.log("quest", questions);
+  // useEffect(() => {
+  //   getAnswers();
+  // }, []);
   getAnswers();
+
+  console.log("answ arr", answersArray);
 
   return (
     <div className="container_questions">
@@ -45,6 +50,7 @@ const Questions = () => {
         <div>
           <h1 className="question_title">{questions[0].question}</h1>
           <div className="container_buttons">
+            {}
             <Button className="button_item">Bonjour</Button>
             <Button className="button_item">Bonjour</Button>
             <Button className="button_item">Bonjour</Button>
