@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Form, Input } from "antd";
 import { message, Button, Space } from "antd";
 import "../form/setup_form.css";
 import SetupPicker from "../picker/SetupPicker";
 import ErrorMessage from "../messages/ErrorMessage";
 import { getQuestions } from "../../data/getQuestions";
+import { AppContext } from "../../context/context";
 
 const optionsCat = [
   { id: 15, value: "video-games", label: "Video-games" },
@@ -27,7 +28,7 @@ const styles = {
 };
 
 const SetupForm = ({ setStarted }) => {
-  const [step, setStep] = useState(1);
+  const context = useContext(AppContext);
   const [quizzParameters, setQuizzParameters] = useState({
     nbOfQuestions: 10,
     category: "video-games",
@@ -57,8 +58,7 @@ const SetupForm = ({ setStarted }) => {
       catId,
       quizzParameters.difficulty
     ).then((res) => {
-      questions = res.data.results;
-      console.log("questr", questions);
+      context.setQuestions(res.data.results);
     });
 
     setStarted(true);

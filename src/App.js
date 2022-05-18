@@ -14,7 +14,12 @@ function App() {
     <AppContextProvider>
       <div className="container">
         <div className="container_setup_form">
-          <SetupForm setStarted={setStart}></SetupForm>
+          {/* {!start ? (
+            <SetupForm setStarted={setStart}></SetupForm>
+          ) : (
+            <div>Bonjour la france</div>
+          )} */}
+           <SetupForm setStarted={setStart}></SetupForm>
         </div>
       </div>
     </AppContextProvider>
