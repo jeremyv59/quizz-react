@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import SetupForm from "./components/form/SetupForm";
 import { AppContextProvider } from "./context/context";
 import "../src/app.css";
+import Questions from "./components/questions/Questions";
 
 function App() {
   const [start, setStart] = useState(false);
@@ -14,12 +15,12 @@ function App() {
     <AppContextProvider>
       <div className="container">
         <div className="container_setup_form">
-          {/* {!start ? (
+          {!start ? (
             <SetupForm setStarted={setStart}></SetupForm>
           ) : (
-            <div>Bonjour la france</div>
-          )} */}
-           <SetupForm setStarted={setStart}></SetupForm>
+            <Questions></Questions>
+          )}
+          {/* <SetupForm setStarted={setStart}></SetupForm> */}
         </div>
       </div>
     </AppContextProvider>
