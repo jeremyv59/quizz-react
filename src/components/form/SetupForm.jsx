@@ -26,7 +26,7 @@ const styles = {
   },
 };
 
-const SetupForm = ({ started }) => {
+const SetupForm = ({ setStarted }) => {
   const [step, setStep] = useState(1);
   const [quizzParameters, setQuizzParameters] = useState({
     nbOfQuestions: 10,
@@ -60,6 +60,8 @@ const SetupForm = ({ started }) => {
       questions = res.data.results;
       console.log("questr", questions);
     });
+
+    setStarted(true);
   };
 
   return (
