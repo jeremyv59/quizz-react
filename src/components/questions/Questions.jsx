@@ -8,8 +8,6 @@ const Questions = () => {
 
   const { questions } = context;
 
-  const answersArray = [];
-
   // const checkAnswers = () => {
   //   questions.map((question) => {
   //     console.log("check", question);
@@ -27,6 +25,19 @@ const Questions = () => {
   // console.log(demoArray);
 
   // console.log("qes", questions);
+
+  const getAnswers = () => {
+    let answersArray = [];
+    questions.map((question) => {
+      answersArray.push(question.incorrect_answers);
+      // answersArray.push(question.correct_answer)
+    });
+    console.log("answ arr", answersArray);
+  };
+
+  console.log("quest", questions);
+
+  getAnswers();
 
   return (
     <div className="container_questions">
