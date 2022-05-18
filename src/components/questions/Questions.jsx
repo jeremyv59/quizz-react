@@ -29,7 +29,7 @@ const Questions = () => {
   const getAnswers = () => {
     let answersArray = [];
     questions.map((question) => {
-      answersArray.push(question.incorrect_answers);
+      answersArray = question.incorrect_answers;
       // answersArray.push(question.correct_answer)
     });
     console.log("answ arr", answersArray);
