@@ -4,6 +4,10 @@
   padding: 1.2rem 1.8rem;
   border-radius: 24px;
 }
+.question_title {
+    text-align: center;
+    font-size: 2rem;
+}
 
 .container_buttons {
   display: flex;
@@ -39,5 +43,8 @@
 @media screen and (max-width: 600px) {
   .container_questions {
     min-width: 90%;
+  }
+  .question_title {
+      font-size: 1.4rem;
   }
 }

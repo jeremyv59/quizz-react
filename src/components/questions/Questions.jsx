@@ -32,7 +32,7 @@ const Questions = () => {
     <div className="container_questions">
       {context.questions.length > 0 ? (
         <div>
-          <h1 className="question_item">{questions[0].question}</h1>
+          <h1 className="question_title">{questions[0].question}</h1>
           <div className="container_buttons">
             <Button className="button_item">Bonjour</Button>
             <Button className="button_item">Bonjour</Button>
