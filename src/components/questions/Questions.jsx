@@ -34,6 +34,16 @@ const Questions = () => {
     }
   }, [context.questions]);
 
+  const checkBooleanAnswer = (value) => {
+    if (value === "True") {
+      return "Vrai";
+    } else if (value === "False") {
+      return "Faux";
+    } else {
+      return value;
+    }
+  };
+
   return (
     <div className="container_questions">
       {context.questions.length > 0 ? (
@@ -53,7 +63,7 @@ const Questions = () => {
                               type="submit"
                               className="button_item"
                             >
-                              {answer}
+                              {checkBooleanAnswer(answer)}
                             </Button>
                           </div>
                         );
