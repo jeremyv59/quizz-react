@@ -24,3 +24,9 @@ export const getAnswers = (contextData) => {
   }
   return finalArr;
 };
+// Fctn to clean question (delete &quot;/)
+export const cleanQuestionTitle = (questionTitle) => {
+  let finalText = "";
+  finalText = questionTitle.replace(/&quot;/g, '\\"');
+  return finalText;
+};

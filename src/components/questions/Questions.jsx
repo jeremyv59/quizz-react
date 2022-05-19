@@ -1,7 +1,11 @@
 import { Button } from "antd";
 import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../context/context";
-import { checkBooleanAnswer, getAnswers } from "../../utils/questions_utils";
+import {
+  checkBooleanAnswer,
+  cleanQuestionTitle,
+  getAnswers,
+} from "../../utils/questions_utils";
 import "../questions/questions.css";
 
 const Questions = () => {
@@ -28,7 +32,9 @@ const Questions = () => {
             if (index === 0) {
               return (
                 <React.Fragment key={index}>
-                  <h1 className="question_title">{question.question}</h1>
+                  <h1 className="question_title">
+                    {cleanQuestionTitle(question.question)}
+                  </h1>
                   {console.log("answers", answers[0])}
                   {answers && answers.length > 0
                     ? answers[index].map((answer, indexAnswer) => {
