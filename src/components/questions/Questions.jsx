@@ -8,19 +8,10 @@ const Questions = () => {
 
   const { questions } = context;
 
-  const [answers, setAnswers] = useState();
-  const [responseSubmitted, setResponseSubmitted] = useState();
+  const [answers, setAnswers] = useState([]);
 
-  let answersArray = [];
-
-  // useEffect(() => {
-  //   checkAnswers();
-  // }, [context]);
-  // var demoArray = [1, 3, 5];
+  // Function to randomize array
   // shuffleArray(demoArray);
-  // console.log(demoArray);
-
-  // console.log("qes", questions);
 
   const getAnswers = () => {
     let arrayIncorrectAnswers = [];
@@ -41,7 +32,7 @@ const Questions = () => {
     if (context.questions.length > 0) {
       setAnswers(getAnswers());
     }
-  }, [context]);
+  }, [context.questions]);
 
   return (
     <div className="container_questions">
@@ -52,21 +43,22 @@ const Questions = () => {
               return (
                 <React.Fragment key={index}>
                   <h1 className="question_title">{question.question}</h1>
-                  <div className="container_buttons">
-                    {}
-                    <Button type="submit" className="button_item">
-                      Bonjour
-                    </Button>
-                    <Button type="submit" className="button_item">
-                      Bonjour
-                    </Button>
-                    <Button type="submit" className="button_item">
-                      Bonjour
-                    </Button>
-                    <Button type="submit" className="button_item">
-                      Bonjour
-                    </Button>
-                  </div>
+                  {console.log("answers", answers[0])}
+                  {answers && answers.length > 0
+                    ? answers[index].map((answer, indexAnswer) => {
+                        return (
+                          <div className="container_buttons">
+                            <Button
+                              key={indexAnswer}
+                              type="submit"
+                              className="button_item"
+                            >
+                              {answer}
+                            </Button>
+                          </div>
+                        );
+                      })
+                    : "Erreur"}
                 </React.Fragment>
               );
             }
