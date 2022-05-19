@@ -1,5 +1,3 @@
-import { decode } from "html-entities";
-
 // Function check if it's true or false
 export const checkBooleanAnswer = (value) => {
   if (value === "True") {
@@ -25,27 +23,4 @@ export const getAnswers = (contextData) => {
     });
   }
   return finalArr;
-};
-
-// Fctn to encode question title
-// export const encodeToUTF16 = (message) => {
-//   // On procède octet par octet
-//   return message
-//     .split("")
-//     .map((char) => {
-//       // Pour chaque octet, on récupère sont point de code
-//       const word = char.codePointAt(0).toString(16);
-
-//       // Si le point de code ne fait qu'un seul octet, on ajoute des 0
-//       // Ceci permet d'obtenir la longueur fixe de l'UTF-16
-//       if (word.length === 2) return `00${word}`;
-//       return word;
-//     })
-//     .join("");
-// };
-
-// Fctn to clean question (replace &quot;/)
-export const cleanQuestionTitle = (questionTitle) => {
-  questionTitle = decode("&lt; &gt; &quot; &apos; &amp; &#169; &#8710; &#039;");
-  return questionTitle;
 };

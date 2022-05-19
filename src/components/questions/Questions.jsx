@@ -30,7 +30,10 @@ const Questions = () => {
               return (
                 <React.Fragment key={index}>
                   <h1 className="question_title">
-                    {decode(question.question)}
+                    {decode(
+                      question.question,
+                      "&lt; &gt; &quot; &apos; &amp; &#169; &#8710; &#039;"
+                    )}
                   </h1>
                   {console.log("answers", answers[0])}
                   {answers && answers.length > 0
