@@ -1,6 +1,7 @@
 import { Button } from "antd";
 import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../context/context";
+import { checkBooleanAnswer, getAnswers } from "../../utils/questions_utils";
 import "../questions/questions.css";
 
 const Questions = () => {
@@ -13,36 +14,11 @@ const Questions = () => {
   // Function to randomize array
   // shuffleArray(demoArray);
 
-  const getAnswers = () => {
-    let arrayIncorrectAnswers = [];
-    let finalArr = [];
-
-    if (context.questions.length > 0) {
-      questions.forEach((question) => {
-        arrayIncorrectAnswers = question.incorrect_answers;
-        arrayIncorrectAnswers.push(question.correct_answer);
-        arrayIncorrectAnswers.sort(() => Math.random() - 0.5);
-        finalArr.push(arrayIncorrectAnswers);
-      });
-    }
-    return finalArr;
-  };
-
   useEffect(() => {
     if (context.questions.length > 0) {
-      setAnswers(getAnswers());
+      setAnswers(getAnswers(context.questions));
     }
   }, [context.questions]);
-
-  const checkBooleanAnswer = (value) => {
-    if (value === "True") {
-      return "Vrai";
-    } else if (value === "False") {
-      return "Faux";
-    } else {
-      return value;
-    }
-  };
 
   return (
     <div className="container_questions">
