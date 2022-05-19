@@ -1,11 +1,8 @@
 import { Button } from "antd";
 import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../context/context";
-import {
-  checkBooleanAnswer,
-  cleanQuestionTitle,
-  getAnswers,
-} from "../../utils/questions_utils";
+import { decode } from "html-entities";
+import { checkBooleanAnswer, getAnswers } from "../../utils/questions_utils";
 import "../questions/questions.css";
 
 const Questions = () => {
@@ -33,7 +30,7 @@ const Questions = () => {
               return (
                 <React.Fragment key={index}>
                   <h1 className="question_title">
-                    {cleanQuestionTitle(question.question)}
+                    {decode(question.question)}
                   </h1>
                   {console.log("answers", answers[0])}
                   {answers && answers.length > 0

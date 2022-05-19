@@ -1,3 +1,5 @@
+import { decode } from "html-entities";
+
 // Function check if it's true or false
 export const checkBooleanAnswer = (value) => {
   if (value === "True") {
@@ -25,7 +27,7 @@ export const getAnswers = (contextData) => {
   return finalArr;
 };
 
-// Fctn to encode question title 
+// Fctn to encode question title
 // export const encodeToUTF16 = (message) => {
 //   // On procède octet par octet
 //   return message
@@ -44,7 +46,6 @@ export const getAnswers = (contextData) => {
 
 // Fctn to clean question (replace &quot;/)
 export const cleanQuestionTitle = (questionTitle) => {
-  let finalText = "";
-  finalText = questionTitle.replace(/&quot;/g, '\\"');
-  return finalText;
+  questionTitle = decode("&lt; &gt; &quot; &apos; &amp; &#169; &#8710; &#039;");
+  return questionTitle;
 };
