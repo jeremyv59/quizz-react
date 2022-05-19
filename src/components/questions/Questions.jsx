@@ -1,5 +1,5 @@
 import { Button } from "antd";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../context/context";
 import "../questions/questions.css";
 
@@ -7,6 +7,9 @@ const Questions = () => {
   const context = useContext(AppContext);
 
   const { questions } = context;
+
+  const [answers, setAnswers] = useState();
+  const [responseSubmitted, setResponseSubmitted] = useState();
 
   let answersArray = [];
 
@@ -27,9 +30,7 @@ const Questions = () => {
       questions.forEach((question) => {
         arrayIncorrectAnswers = question.incorrect_answers;
         arrayIncorrectAnswers.push(question.correct_answer);
-        console.log("incorr arr", arrayIncorrectAnswers);
         arrayIncorrectAnswers.sort(() => Math.random() - 0.5);
-        console.log("incorr arr output", arrayIncorrectAnswers);
         finalArr.push(arrayIncorrectAnswers);
       });
     }
@@ -38,8 +39,7 @@ const Questions = () => {
 
   useEffect(() => {
     if (context.questions.length > 0) {
-      let res = getAnswers();
-      console.log("res", res);
+      setAnswers(getAnswers());
     }
   }, [context]);
 
@@ -47,14 +47,30 @@ const Questions = () => {
     <div className="container_questions">
       {context.questions.length > 0 ? (
         <div>
-          <h1 className="question_title">{questions[0].question}</h1>
-          <div className="container_buttons">
-            {}
-            <Button className="button_item">Bonjour</Button>
-            <Button className="button_item">Bonjour</Button>
-            <Button className="button_item">Bonjour</Button>
-            <Button className="button_item">Bonjour</Button>
-          </div>
+          {questions.map((question, index) => {
+            if (index === 0) {
+              return (
+                <React.Fragment key={index}>
+                  <h1 className="question_title">{question.question}</h1>
+                  <div className="container_buttons">
+                    {}
+                    <Button type="submit" className="button_item">
+                      Bonjour
+                    </Button>
+                    <Button type="submit" className="button_item">
+                      Bonjour
+                    </Button>
+                    <Button type="submit" className="button_item">
+                      Bonjour
+                    </Button>
+                    <Button type="submit" className="button_item">
+                      Bonjour
+                    </Button>
+                  </div>
+                </React.Fragment>
+              );
+            }
+          })}
         </div>
       ) : (
         "Chargement..."
