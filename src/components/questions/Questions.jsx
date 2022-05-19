@@ -29,20 +29,26 @@ const Questions = () => {
   // console.log("qes", questions);
 
   const getAnswers = () => {
-    questions.map((question) => {
-      answersArray = question.incorrect_answers;
-      answersArray.push(...answersArray, question.correct_answer);
-      console.log("que", question);
-    });
+    let arrayIncorrectAnswers = [];
+    let finalArr = [];
+
+    if (context.questions.length > 0) {
+      questions.forEach((question) => {
+        arrayIncorrectAnswers = question.incorrect_answers;
+        arrayIncorrectAnswers.push(question.correct_answer);
+
+        finalArr.push(arrayIncorrectAnswers);
+      });
+    }
+    return finalArr;
   };
 
-  // console.log("quest", questions);
-  // useEffect(() => {
-  //   getAnswers();
-  // }, []);
-  getAnswers();
-
-  console.log("answ arr", answersArray);
+  useEffect(() => {
+    if (context.questions.length > 0) {
+      let res = getAnswers();
+      console.log("resss", res);
+    }
+  }, [context]);
 
   return (
     <div className="container_questions">
