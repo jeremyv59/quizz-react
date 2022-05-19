@@ -10,15 +10,6 @@ const Questions = () => {
 
   let answersArray = [];
 
-  // const checkAnswers = () => {
-  //   questions.map((question) => {
-  //     console.log("check", question);
-  //   });
-  // };
-  // function questionsArray(inputArray) {
-  //   inputArray.sort(() => Math.random() - 0.5);
-  // }
-
   // useEffect(() => {
   //   checkAnswers();
   // }, [context]);
@@ -36,7 +27,9 @@ const Questions = () => {
       questions.forEach((question) => {
         arrayIncorrectAnswers = question.incorrect_answers;
         arrayIncorrectAnswers.push(question.correct_answer);
-
+        console.log("incorr arr", arrayIncorrectAnswers);
+        arrayIncorrectAnswers.sort(() => Math.random() - 0.5);
+        console.log("incorr arr output", arrayIncorrectAnswers);
         finalArr.push(arrayIncorrectAnswers);
       });
     }
@@ -46,7 +39,7 @@ const Questions = () => {
   useEffect(() => {
     if (context.questions.length > 0) {
       let res = getAnswers();
-      console.log("resss", res);
+      console.log("res", res);
     }
   }, [context]);
 
