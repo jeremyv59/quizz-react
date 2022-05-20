@@ -25,9 +25,7 @@ const Questions = () => {
 
   const checkAnswer = () => {
     if (selectedAnswer === questions[answerCounter].correct_answer) {
-      console.log("bonne rep");
-    } else {
-      console.log("mauvaise rep");
+      setGoodAnswers(goodAnswersCounter++);
     }
   };
 
@@ -63,7 +61,11 @@ const Questions = () => {
                           <div className="container_buttons">
                             <Button
                               key={indexAnswer}
-                              className="button_item"
+                              className={
+                                selectedAnswer === answer
+                                  ? "button_item_active"
+                                  : "button_item"
+                              }
                               onClick={(e) => handleClickAnswer(e)}
                             >
                               {answer}

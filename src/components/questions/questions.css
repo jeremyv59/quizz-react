@@ -32,6 +32,18 @@
   font-weight: 500;
 }
 
+.button_item_active {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  cursor: pointer;
+  width: 60%;
+  padding: 1rem 0rem;
+  border-radius: 0.5rem;
+  transition: var(--transition);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
 .btn_next_container {
   display: flex;
   justify-content: flex-end;
