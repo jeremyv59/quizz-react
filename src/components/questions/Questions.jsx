@@ -30,7 +30,7 @@ const Questions = () => {
             if (index === 0) {
               return (
                 <React.Fragment key={index}>
-                  <h4>{`Réponses correctes : ${goodAnswers}/${index}`}</h4>
+                  <h4 className="good_answers_title">{`Réponses correctes : ${goodAnswers}/${index}`}</h4>
                   <h1 className="question_title">
                     {decode(
                       question.question,
