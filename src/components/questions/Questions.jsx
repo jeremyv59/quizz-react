@@ -13,6 +13,7 @@ const Questions = () => {
 
   const [answers, setAnswers] = useState([]);
   const [goodAnswersCounter, setGoodAnswers] = useState(0);
+  const [answerCounter, setAnswerCounter] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState();
 
   // Function to randomize array
@@ -20,6 +21,18 @@ const Questions = () => {
 
   const handleClickAnswer = (e) => {
     setSelectedAnswer(e.target.textContent);
+  };
+
+  const checkAnswer = () => {
+    if (selectedAnswer === questions[answerCounter].correct_answer) {
+      console.log("bonne rep");
+    } else {
+      console.log("mauvaise rep");
+    }
+  };
+
+  const handleSubmitAnswer = () => {
+    checkAnswer();
   };
 
   useEffect(() => {
@@ -43,7 +56,7 @@ const Questions = () => {
                       "&lt; &gt; &quot; &apos; &amp; &#169; &#8710; &#039;"
                     )}
                   </h1>
-                  {console.log("answers", answers[0])}
+                  {console.log("questions", questions)}
                   {answers && answers.length > 0
                     ? answers[index].map((answer, indexAnswer) => {
                         return (
@@ -64,7 +77,7 @@ const Questions = () => {
             }
           })}
           <div className="btn_next_container">
-            <Button className="btn_next_question">
+            <Button onClick={handleSubmitAnswer} className="btn_next_question">
               Question suivante
               <IoArrowForward className="arrow_icon"></IoArrowForward>
             </Button>
