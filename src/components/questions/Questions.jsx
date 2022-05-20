@@ -11,6 +11,7 @@ const Questions = () => {
   const { questions } = context;
 
   const [answers, setAnswers] = useState([]);
+  const [goodAnswers, setGoodAnswers] = useState(0);
 
   // Function to randomize array
   // shuffleArray(demoArray);
@@ -29,6 +30,7 @@ const Questions = () => {
             if (index === 0) {
               return (
                 <React.Fragment key={index}>
+                  <h4>{`Réponses correctes : ${goodAnswers}/${index}`}</h4>
                   <h1 className="question_title">
                     {decode(
                       question.question,
