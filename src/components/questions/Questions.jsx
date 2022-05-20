@@ -57,6 +57,7 @@ const Questions = () => {
               );
             }
           })}
+          <Button className="btn_next_question">Question suivante</Button>
         </div>
       ) : (
         "Chargement..."

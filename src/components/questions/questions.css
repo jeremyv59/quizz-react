@@ -32,6 +32,14 @@
   font-weight: 500;
 }
 
+.btn_next_question {
+  background: #7ddf64;
+  color: var(--color-text);
+  font-size: 0.9rem;
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+}
+
 .button_item:hover {
   background-color: var(--color-primary);
   color: var(--color-text);
