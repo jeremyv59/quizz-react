@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../context/context";
 import { decode } from "html-entities";
 import { checkBooleanAnswer, getAnswers } from "../../utils/questions_utils";
+import { IoArrowForward } from "react-icons/io5";
 import "../questions/questions.css";
 
 const Questions = () => {
@@ -57,7 +58,12 @@ const Questions = () => {
               );
             }
           })}
-          <Button className="btn_next_question">Question suivante</Button>
+          <div className="btn_next_container">
+            <Button className="btn_next_question">
+              Question suivante
+              <IoArrowForward className="arrow_icon"></IoArrowForward>
+            </Button>
+          </div>
         </div>
       ) : (
         "Chargement..."
