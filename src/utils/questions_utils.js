@@ -1,14 +1,3 @@
-// Function check if it's true or false
-export const checkBooleanAnswer = (value) => {
-  if (value === "True") {
-    return "Vrai";
-  } else if (value === "False") {
-    return "Faux";
-  } else {
-    return value;
-  }
-};
-
 // Function to getAnswers in the same array and sorted
 export const getAnswers = (contextData) => {
   let arrayIncorrectAnswers = [];

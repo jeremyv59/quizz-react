@@ -41,6 +41,7 @@
   background: #7ddf64;
   color: var(--color-text);
   font-size: 0.9rem;
+  cursor: pointer;
   font-weight: 600;
   padding: 0.8rem 1rem;
   border-radius: 0.5rem;

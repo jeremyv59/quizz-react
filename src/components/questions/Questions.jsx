@@ -12,10 +12,15 @@ const Questions = () => {
   const { questions } = context;
 
   const [answers, setAnswers] = useState([]);
-  const [goodAnswers, setGoodAnswers] = useState(0);
+  const [goodAnswersCounter, setGoodAnswers] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState();
 
   // Function to randomize array
   // shuffleArray(demoArray);
+
+  const handleClickAnswer = (e) => {
+    setSelectedAnswer(e.target.textContent);
+  };
 
   useEffect(() => {
     if (context.questions.length > 0) {
@@ -31,7 +36,7 @@ const Questions = () => {
             if (index === 0) {
               return (
                 <React.Fragment key={index}>
-                  <h4 className="good_answers_title">{`Réponses correctes : ${goodAnswers}/${index}`}</h4>
+                  <h4 className="good_answers_title">{`Réponses correctes : ${goodAnswersCounter}/${index}`}</h4>
                   <h1 className="question_title">
                     {decode(
                       question.question,
@@ -45,10 +50,10 @@ const Questions = () => {
                           <div className="container_buttons">
                             <Button
                               key={indexAnswer}
-                              type="submit"
                               className="button_item"
+                              onClick={(e) => handleClickAnswer(e)}
                             >
-                              {checkBooleanAnswer(answer)}
+                              {answer}
                             </Button>
                           </div>
                         );
