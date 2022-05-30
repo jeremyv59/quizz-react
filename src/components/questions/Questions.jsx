@@ -30,13 +30,9 @@ const Questions = () => {
     setAnswerCounter(answerCounter + 1);
   };
 
-  const handleSubmitAnswer = async () => {
-    try {
-      checkAnswer();
-      setSelectedAnswer("");
-    } catch (e) {
-      console.log("submit error");
-    }
+  const handleSubmitAnswer = () => {
+    checkAnswer();
+    setSelectedAnswer("");
   };
 
   useEffect(() => {
