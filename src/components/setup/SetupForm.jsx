@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Form, Input } from "antd";
 import { message, Button, Space } from "antd";
-import "../form/setup_form.css";
+import "./setup_form.css";
 import SetupPicker from "../picker/SetupPicker";
 import ErrorMessage from "../messages/ErrorMessage";
 import { getQuestions } from "../../data/getQuestions";

@@ -50,7 +50,7 @@ const Questions = ({ start }) => {
       {questions.length > 0 ? (
         <div>
           {questions.map((question, index) => {
-            if (index === answerCounter) {
+            if (!finish && index === answerCounter) {
               return (
                 <React.Fragment key={index}>
                   <h4 className="good_answers_title">{`Réponses correctes : ${goodAnswersCounter}/${index}`}</h4>
@@ -60,12 +60,6 @@ const Questions = ({ start }) => {
                       "&lt; &gt; &quot; &apos; &amp; &#169; &#8710; &#039;"
                     )}
                   </h1>
-                  {console.log(
-                    "index",
-                    index,
-                    "question.length",
-                    questions.length
-                  )}
                   {answers && answers.length > 0
                     ? answers[index].map((answer, indexAnswer) => {
                         return (
@@ -101,6 +95,7 @@ const Questions = ({ start }) => {
               );
             }
           })}
+          {finish ? <h1 className="question_title"> Quizz terminé !</h1> : null}
         </div>
       ) : (
         "Chargement"

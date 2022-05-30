@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import SetupForm from "./components/form/SetupForm";
+import SetupForm from "./components/setup/SetupForm";
 import { AppContextProvider } from "./context/context";
 import "../src/app.css";
 import Questions from "./components/questions/Questions";
