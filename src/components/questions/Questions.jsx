@@ -146,7 +146,10 @@ const Questions = () => {
                               }
                               onClick={(e) => handleClickAnswer(e)}
                             >
-                              {answer}
+                              {decode(
+                                answer,
+                                "&lt; &gt; &quot; &apos; &amp; &#169; &#8710; &#039;"
+                              )}
                             </Button>
                           </div>
                         );

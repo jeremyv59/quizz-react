@@ -1,8 +1,8 @@
 .container_questions {
   background: var(--color-white);
-  /* text-align: center; */
   padding: 1.2rem 1.8rem;
   border-radius: 24px;
+  max-height: 90vh;
 }
 
 .good_answers_title {
@@ -12,7 +12,7 @@
 }
 
 .question_title {
-  font-size: 2rem;
+  font-size: 1.7rem;
   color: var(--color-text);
 }
 
@@ -82,9 +82,12 @@
     min-width: 90%;
   }
   .question_title {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
   .good_answers_title {
     text-align: center;
+  }
+  .btn_next_container {
+    justify-content: center;
   }
 }
