@@ -15,7 +15,7 @@ const Questions = ({ start }) => {
   const [goodAnswersCounter, setGoodAnswers] = useState(0);
   const [answerCounter, setAnswerCounter] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState();
-  const [finish, setFinish] = useState(!start);
+  const [finish, setFinish] = useState(false);
 
   // Function to randomize array
   // shuffleArray(demoArray);
@@ -31,7 +31,10 @@ const Questions = ({ start }) => {
     setAnswerCounter(answerCounter + 1);
   };
 
-  const handleSubmitAnswer = () => {
+  const handleSubmitAnswer = (index) => {
+    if (index + 1 === questions.length) {
+      setFinish(true);
+    }
     checkAnswer();
     setSelectedAnswer("");
   };
@@ -41,10 +44,6 @@ const Questions = ({ start }) => {
       setAnswers(getAnswers(context.questions));
     }
   }, [context.questions]);
-
-  useEffect(() => {
-    console.log("finish", finish);
-  }, [finish]);
 
   return (
     <div className="container_questions">
@@ -61,6 +60,12 @@ const Questions = ({ start }) => {
                       "&lt; &gt; &quot; &apos; &amp; &#169; &#8710; &#039;"
                     )}
                   </h1>
+                  {console.log(
+                    "index",
+                    index,
+                    "question.length",
+                    questions.length
+                  )}
                   {answers && answers.length > 0
                     ? answers[index].map((answer, indexAnswer) => {
                         return (
@@ -85,7 +90,7 @@ const Questions = ({ start }) => {
                     : "Erreur"}
                   <div className="btn_next_container">
                     <Button
-                      onClick={() => handleSubmitAnswer()}
+                      onClick={() => handleSubmitAnswer(index)}
                       className="btn_next_question"
                     >
                       Question suivante
@@ -94,9 +99,6 @@ const Questions = ({ start }) => {
                   </div>
                 </React.Fragment>
               );
-            } else if (index === question.length) {
-              console.log("index", index, "question.length", question.length);
-              setFinish(true);
             }
           })}
         </div>
