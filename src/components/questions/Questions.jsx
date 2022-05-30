@@ -6,7 +6,7 @@ import { getAnswers } from "../../utils/questions_utils";
 import { IoArrowForward } from "react-icons/io5";
 import "../questions/questions.css";
 
-const Questions = () => {
+const Questions = ({ start }) => {
   const context = useContext(AppContext);
 
   const { questions } = context;
@@ -15,6 +15,7 @@ const Questions = () => {
   const [goodAnswersCounter, setGoodAnswers] = useState(0);
   const [answerCounter, setAnswerCounter] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState();
+  const [finish, setFinish] = useState(!start);
 
   // Function to randomize array
   // shuffleArray(demoArray);
@@ -40,6 +41,10 @@ const Questions = () => {
       setAnswers(getAnswers(context.questions));
     }
   }, [context.questions]);
+
+  useEffect(() => {
+    console.log("finish", finish);
+  }, [finish]);
 
   return (
     <div className="container_questions">
@@ -89,6 +94,9 @@ const Questions = () => {
                   </div>
                 </React.Fragment>
               );
+            } else if (index === question.length) {
+              console.log("index", index, "question.length", question.length);
+              setFinish(true);
             }
           })}
         </div>

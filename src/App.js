@@ -18,7 +18,7 @@ function App() {
           {!start ? (
             <SetupForm setStarted={setStart}></SetupForm>
           ) : (
-            <Questions></Questions>
+            <Questions start={start}></Questions>
           )}
           {/* <SetupForm setStarted={setStart}></SetupForm> */}
         </div>
