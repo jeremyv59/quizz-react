@@ -46,18 +46,11 @@ const Questions = () => {
     // setAnswerCounter(answerCounter++);
 
     try {
-      // if (selectedAnswer === questions[answerCounter].correct_answer) {
-      //   console.log("bonne réponse");
-      //   // setGoodAnswers(goodAnswersCounter++);
       checkAnswer();
-      // }
-
-      // setAnswerCounter(answerCounter++);
+      setSelectedAnswer("");
     } catch (e) {
       console.log("submit error");
     }
-
-    // setAnswerCounter(answerCounter++);
   };
 
   useEffect(() => {
