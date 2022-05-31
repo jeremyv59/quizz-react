@@ -1,5 +1,6 @@
 import React from "react";
-import { CircularProgressbar } from "react-circular-progressbar";
+import "./display_score.css";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
 const DisplayScore = ({ goodAnswers, totalQuestions }) => {
@@ -9,10 +10,25 @@ const DisplayScore = ({ goodAnswers, totalQuestions }) => {
     <React.Fragment>
       <h1 className="title">Quizz terminé !</h1>
       <h3 className="text">Votre taux de bonne réponse est de :</h3>
-      <div>
+      <div className="container_progressbar">
         <CircularProgressbar
           value={percentage}
           text={`${percentage}%`}
+          styles={buildStyles({
+            // rotation: 0.25,
+            // strokeLinecap: 'butt',
+
+            // Text size
+            textSize: "1.3rem",
+
+            // How long animation takes to go from one percentage to another, in seconds
+            pathTransitionDuration: 0.5,
+
+            // Colors
+            pathColor: "blue",
+            trailColor: "yellow",
+            textColor: "#284b63",
+          })}
         ></CircularProgressbar>
       </div>
     </React.Fragment>

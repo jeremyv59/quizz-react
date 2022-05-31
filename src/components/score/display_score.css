@@ -1,0 +1,14 @@
+.title {
+  font-size: 1.8rem;
+  color: var(--color-text);
+}
+
+.text {
+  color: var(--color-text);
+  margin-bottom: 1.2rem;
+}
+
+.container_progressbar {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
