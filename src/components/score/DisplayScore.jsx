@@ -7,12 +7,13 @@ const DisplayScore = ({ goodAnswers, totalQuestions }) => {
 
   return (
     <React.Fragment>
-      <h1>Quizz terminé !</h1>
-      <h3>
-        Votre taux de bonne réponse est de : ${goodAnswers} ${totalQuestions}
-      </h3>
+      <h1 className="title">Quizz terminé !</h1>
+      <h3 className="text">Votre taux de bonne réponse est de :</h3>
       <div>
-        <CircularProgressbar></CircularProgressbar>
+        <CircularProgressbar
+          value={percentage}
+          text={`${percentage}%`}
+        ></CircularProgressbar>
       </div>
     </React.Fragment>
   );
