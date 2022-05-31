@@ -34,6 +34,7 @@ const SetupForm = ({ setStarted }) => {
     category: "video-games",
     difficulty: "easy",
   });
+  const [error, setError] = useState(false);
 
   let catId = 0;
 
@@ -52,15 +53,21 @@ const SetupForm = ({ setStarted }) => {
   }, [quizzParameters.category]);
 
   const onHandleStart = () => {
-    getQuestions(
-      quizzParameters.nbOfQuestions,
-      catId,
-      quizzParameters.difficulty
-    ).then((res) => {
-      context.setQuestions(res.data.results);
-    });
-
-    setStarted(true);
+    if (
+      quizzParameters.nbOfQuestions > 0 &&
+      quizzParameters.nbOfQuestions <= 50
+    ) {
+      getQuestions(
+        quizzParameters.nbOfQuestions,
+        catId,
+        quizzParameters.difficulty
+      ).then((res) => {
+        context.setQuestions(res.data.results);
+      });
+      setStarted(true);
+    } else {
+      setError(true);
+    }
   };
 
   return (
