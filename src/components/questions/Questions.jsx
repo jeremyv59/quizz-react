@@ -96,7 +96,12 @@ const Questions = ({ start }) => {
               );
             }
           })}
-          {finish ? <DisplayScore></DisplayScore> : null}
+          {finish ? (
+            <DisplayScore
+              goodAnswers={goodAnswersCounter}
+              totalQuestions={questions.length}
+            ></DisplayScore>
+          ) : null}
         </div>
       ) : (
         "Chargement"
