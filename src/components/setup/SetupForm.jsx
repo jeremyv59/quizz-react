@@ -52,7 +52,6 @@ const SetupForm = ({ setStarted }) => {
   }, [quizzParameters.category]);
 
   const onHandleStart = () => {
-    let questions;
     getQuestions(
       quizzParameters.nbOfQuestions,
       catId,
@@ -71,6 +70,9 @@ const SetupForm = ({ setStarted }) => {
       <Form.Item rules={[{ type: "number", min: 0, max: 52 }]}>
         <Input
           className="input_number"
+          min="0"
+          max="50"
+          type="number"
           value={
             quizzParameters.nbOfQuestions !== 0
               ? quizzParameters.nbOfQuestions
