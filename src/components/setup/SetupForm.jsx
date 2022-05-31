@@ -48,10 +48,6 @@ const SetupForm = ({ setStarted }) => {
     return result;
   };
 
-  useEffect(() => {
-    catId = checkCategoryId(quizzParameters.category);
-  }, [quizzParameters.category]);
-
   const onHandleStart = () => {
     if (
       quizzParameters.nbOfQuestions > 0 &&
@@ -70,11 +66,15 @@ const SetupForm = ({ setStarted }) => {
     }
   };
 
+  useEffect(() => {
+    catId = checkCategoryId(quizzParameters.category);
+  }, [quizzParameters.category]);
+
   return (
     <Form className="container_form">
       <h1 className="form_title">Paramétrage</h1>
       <label>Number of questions</label>
-      <Form.Item rules={[{ type: "number", min: 0, max: 52 }]}>
+      <Form.Item rules={[{ type: "number", min: 0, max: 50 }]}>
         <Input
           className="input_number"
           min="0"
@@ -114,6 +114,9 @@ const SetupForm = ({ setStarted }) => {
         labelName="Difficulty"
       ></SetupPicker>
 
+      {error ? (
+        <ErrorMessage message="Veuillez saisir un nombre de questions entre 0 et 50"></ErrorMessage>
+      ) : null}
       {/* <ErrorMessage></ErrorMessage> */}
       <Form.Item className="btn_container">
         <Button onClick={onHandleStart} className="btn_start">
