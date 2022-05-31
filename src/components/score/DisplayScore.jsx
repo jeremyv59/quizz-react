@@ -6,6 +6,12 @@ import "react-circular-progressbar/dist/styles.css";
 const DisplayScore = ({ goodAnswers, totalQuestions }) => {
   const percentage = Math.round((goodAnswers / totalQuestions) * 100);
 
+  const getColorValue = () => {
+    if (percentage <= 33) return "red";
+    if (percentage >= 33 && percentage <= 66) return "orange";
+    if (percentage >= 66) return "#7ddf64";
+  };
+
   return (
     <React.Fragment>
       <h1 className="title">Quizz terminé !</h1>
@@ -25,8 +31,8 @@ const DisplayScore = ({ goodAnswers, totalQuestions }) => {
             pathTransitionDuration: 0.5,
 
             // Colors
-            pathColor: "blue",
-            trailColor: "yellow",
+            pathColor: getColorValue(),
+            trailColor: "#d6d6d6",
             textColor: "#284b63",
           })}
         ></CircularProgressbar>
