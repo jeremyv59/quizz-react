@@ -7,10 +7,6 @@ import Questions from "./components/questions/Questions";
 function App() {
   const [start, setStart] = useState(false);
 
-  // useEffect(() => {
-  //   console.log("start", start);
-  // }, [start]);
-
   return (
     <AppContextProvider>
       <div className="container">

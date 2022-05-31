@@ -117,7 +117,7 @@ const SetupForm = ({ setStarted }) => {
       {error ? (
         <ErrorMessage message="Veuillez saisir un nombre de questions entre 0 et 50"></ErrorMessage>
       ) : null}
-      {/* <ErrorMessage></ErrorMessage> */}
+      
       <Form.Item className="btn_container">
         <Button onClick={onHandleStart} className="btn_start">
           Lancer le quizz

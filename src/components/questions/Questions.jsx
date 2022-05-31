@@ -18,9 +18,6 @@ const Questions = ({ start }) => {
   const [selectedAnswer, setSelectedAnswer] = useState();
   const [finish, setFinish] = useState(false);
 
-  // Function to randomize array
-  // shuffleArray(demoArray);
-
   const handleClickAnswer = (e) => {
     setSelectedAnswer(e.target.textContent);
   };
