@@ -5,6 +5,7 @@ import { decode } from "html-entities";
 import { getAnswers } from "../../utils/questions_utils";
 import { IoArrowForward } from "react-icons/io5";
 import "../questions/questions.css";
+import DisplayScore from "../score/DisplayScore";
 
 const Questions = ({ start }) => {
   const context = useContext(AppContext);
@@ -95,7 +96,7 @@ const Questions = ({ start }) => {
               );
             }
           })}
-          {finish ? <h1 className="question_title"> Quizz terminé !</h1> : null}
+          {finish ? <DisplayScore></DisplayScore> : null}
         </div>
       ) : (
         "Chargement"
