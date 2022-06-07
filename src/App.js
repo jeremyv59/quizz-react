@@ -8,7 +8,7 @@ function App() {
   const [start, setStart] = useState(false);
 
   return (
-    <AppContextProvider>
+    <AppContextProvider value={{ start, setStart }}>
       <div className="container">
         <div className="container_setup_form">
           {!start ? (
