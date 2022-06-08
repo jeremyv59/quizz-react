@@ -27,7 +27,7 @@ const styles = {
   },
 };
 
-const SetupForm = ({ setStarted }) => {
+const SetupForm = () => {
   const context = useContext(AppContext);
   const [quizzParameters, setQuizzParameters] = useState({
     nbOfQuestions: 10,
@@ -60,7 +60,8 @@ const SetupForm = ({ setStarted }) => {
       ).then((res) => {
         context.setQuestions(res.data.results);
       });
-      setStarted(true);
+      console.log("handle start ctx", context);
+      context.setStart(true);
     } else {
       setError(true);
     }
@@ -117,7 +118,7 @@ const SetupForm = ({ setStarted }) => {
       {error ? (
         <ErrorMessage message="Veuillez saisir un nombre de questions entre 0 et 50"></ErrorMessage>
       ) : null}
-      
+
       <Form.Item className="btn_container">
         <Button onClick={onHandleStart} className="btn_start">
           Lancer le quizz

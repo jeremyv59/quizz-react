@@ -7,7 +7,7 @@ import { IoArrowForward } from "react-icons/io5";
 import "../questions/questions.css";
 import DisplayScore from "../score/DisplayScore";
 
-const Questions = ({ start }) => {
+const Questions = () => {
   const context = useContext(AppContext);
 
   const { questions } = context;
