@@ -5,33 +5,16 @@ import "../src/app.css";
 import Questions from "./components/questions/Questions";
 
 function App() {
-  const context = useContext(AppContext);
-  console.log("ctx", context);
-  // const [isStarted, setIsStarted] = useState(context ? context.start : null);
-
-  // useEffect(() => {
-  //   if (context !== null) {
-  //     setIsStarted(context.start);
-  //   }
-  //   console.log("is started", isStarted);
-  // }, [context.start !== null]);
-
-  const checkStarted = (started) => {
-    if (started === true) return true;
-    if (started === false) return false;
-    if (started === null) return false;
-  };
-
-  useEffect(() => {}, [context]);
+  const [start, setStart] = useState(false);
 
   return (
     <AppContextProvider>
       <div className="container">
         <div className="container_setup_form">
-          {context === undefined ? (
-            <SetupForm></SetupForm>
+          {!start ? (
+            <SetupForm setStarted={setStart}></SetupForm>
           ) : (
-            <Questions></Questions>
+            <Questions setStarted={setStart}></Questions>
           )}
         </div>
       </div>

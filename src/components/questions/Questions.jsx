@@ -7,7 +7,7 @@ import { IoArrowForward } from "react-icons/io5";
 import "../questions/questions.css";
 import DisplayScore from "../score/DisplayScore";
 
-const Questions = () => {
+const Questions = ({ setStarted }) => {
   const context = useContext(AppContext);
 
   const { questions } = context;
@@ -97,6 +97,7 @@ const Questions = () => {
             <DisplayScore
               goodAnswers={goodAnswersCounter}
               totalQuestions={questions.length}
+              onRestartClick={() => setStarted(false)}
             ></DisplayScore>
           ) : null}
         </div>

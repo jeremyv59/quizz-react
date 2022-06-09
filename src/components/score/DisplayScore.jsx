@@ -4,7 +4,7 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { Button } from "antd";
 
-const DisplayScore = ({ goodAnswers, totalQuestions }) => {
+const DisplayScore = ({ goodAnswers, totalQuestions, onRestartClick }) => {
   const percentage = Math.round((goodAnswers / totalQuestions) * 100);
 
   const getColorValue = () => {
@@ -39,7 +39,9 @@ const DisplayScore = ({ goodAnswers, totalQuestions }) => {
         ></CircularProgressbar>
       </div>
       <div className="btn_container">
-        <Button className="restart_btn">Recommencer</Button>
+        <Button onClick={onRestartClick} className="restart_btn">
+          Recommencer
+        </Button>
       </div>
     </React.Fragment>
   );

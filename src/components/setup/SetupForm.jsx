@@ -27,7 +27,7 @@ const styles = {
   },
 };
 
-const SetupForm = () => {
+const SetupForm = ({ setStarted }) => {
   const context = useContext(AppContext);
   const [quizzParameters, setQuizzParameters] = useState({
     nbOfQuestions: 10,
@@ -60,8 +60,7 @@ const SetupForm = () => {
       ).then((res) => {
         context.setQuestions(res.data.results);
       });
-      console.log("handle start ctx", context);
-      context.setStart(true);
+      setStarted(true);
     } else {
       setError(true);
     }
