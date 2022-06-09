@@ -37,6 +37,11 @@ const Questions = ({ setStarted }) => {
     setSelectedAnswer("");
   };
 
+  const restartClickCallBack = () => {
+    setStarted(false);
+    context.setQuestions([]);
+  };
+
   useEffect(() => {
     if (context.questions.length > 0) {
       setAnswers(getAnswers(context.questions));
@@ -97,7 +102,7 @@ const Questions = ({ setStarted }) => {
             <DisplayScore
               goodAnswers={goodAnswersCounter}
               totalQuestions={questions.length}
-              onRestartClick={() => setStarted(false)}
+              onRestartClick={restartClickCallBack}
             ></DisplayScore>
           ) : null}
         </div>
